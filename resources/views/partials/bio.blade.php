@@ -9,7 +9,7 @@
             <div class="w-full bg-gradient-to-br from-gray-800 to-gray-700 text-white rounded-lg p-4 border-1 border-white border-opacity-50 transition duration-300 ease-in-out transform flex flex-col justify-start items-start gap-1 mt-2 border">
                 <div class="flex mb-4 last:mb-0">
                     <dt class="whitespace-pre-wrap break-words opacity-50 leading-16 mr-8 flex-none w-16 text-sm">Nama</dt>
-                    <dd class="whitespace-pre-wrap break-words support-break-word s13-regular-white leading-16 flex-1 text-sm">Christian Haidar Fernando Torres Putra</dd>
+                    <dd class="whitespace-pre-wrap break-words support-break-word s13-regular-white leading-16 flex-1 text-sm">{{ $user->name }}</dd>
                 </div>
                 <div class="flex mb-4 last:mb-0">
                     <dt class="whitespace-pre-wrap break-words opacity-50 leading-16 mr-8 flex-none w-16 text-sm">Kelas</dt>

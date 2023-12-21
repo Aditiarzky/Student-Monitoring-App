@@ -62,6 +62,59 @@ try {
     });
 
     showPartial("akademik");
+
+    function togglePassword(inputId, buttonId, iconId) {
+        const passwordInput = document.getElementById(inputId);
+        const toggleButton = document.getElementById(buttonId);
+        const toggleIcon = document.getElementById(iconId);
+
+        toggleButton.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            } else {
+                passwordInput.type = "password";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            }
+        });
+    }
+
+    togglePassword(
+        "password-lama",
+        "toggle-button-password-lama",
+        "toggle-icon-password-lama"
+    );
+    togglePassword(
+        "password-baru",
+        "toggle-button-password-baru",
+        "toggle-icon-password-baru"
+    );
+
+    const originalValues = {};
+    const readonlyInputs = document.querySelectorAll("input[readonly]");
+
+    readonlyInputs.forEach(function (input) {
+        originalValues[input.id] = input.value;
+
+        input.addEventListener("input", function () {
+            document
+                .querySelectorAll(".alert-message")
+                .forEach(function (alert) {
+                    alert.classList.remove("hidden");
+                });
+
+            setTimeout(function () {
+                input.value = originalValues[input.id];
+                document
+                    .querySelectorAll(".alert-message")
+                    .forEach(function (alert) {
+                        alert.classList.add("hidden");
+                    });
+            }, 3000);
+        });
+    });
 } catch (error) {
     console.log("error javascript dashortu: " + error);
 }

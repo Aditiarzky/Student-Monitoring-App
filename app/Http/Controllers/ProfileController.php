@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
@@ -16,7 +18,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
+        return view('ortu.dashortu', [
             'user' => $request->user(),
         ]);
     }
@@ -24,18 +26,24 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(Request $request)
     {
-        $request->user()->fill($request->validated());
+        $request->validate([
+            'password-lama' => 'required|string',
+            'password-baru' => 'required|string|min:8|different:password-lama',
+        ]);
 
-        // Jika ada perubahan pada email, reset verifikasi email
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // Check if the provided old password matches the current password
+        if (!Hash::check($request->input('password-lama'), Auth::user()->password)) {
+            return redirect()->route('ortu.dashortu')->with('error', 'Kata Sandi Lama Salah');
         }
 
-        $request->user()->save();
+        // Update the password
+        Auth::user()->update([
+            'password' => bcrypt($request->input('password-baru')),
+        ]);
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return redirect()->route('ortu.dashortu')->with('success', 'Kata Sandi Berhasil Diubah');
     }
 
     /**

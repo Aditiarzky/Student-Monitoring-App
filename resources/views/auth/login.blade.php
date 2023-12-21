@@ -31,7 +31,7 @@
         </div>
 
         <div class="flex items-center justify-between mt-7">
-            <x-secondary-button class="hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+            <x-secondary-button type="submit" class="hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                 {{ __('Log in') }}
             </x-secondary-button>
 
