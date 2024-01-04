@@ -22,6 +22,31 @@ Route::get('/ortu', function () {
     return view('ortu.dashortu');
 });
 
+
+Route::get('/registersiswa', function () {
+    return view('registersiswa');
+});
+
+//Admin
+Route::get('/admin', function () {
+    return view('admin.pendaftar');
+});
+Route::get('/admin/akunuser', function () {
+    return view('admin.akunuser');
+});
+Route::get('/admin/pengumuman', function () {
+    return view('admin.pengumuman');
+});
+Route::get('/admin/registerdetail', function () {
+    return view('admin.pendaftar.detailregister');
+});
+Route::get('/admin/buatakun', function () {
+    return view('admin.pendaftar.buatakun');
+});
+Route::get('/admin/buatbiodata', function () {
+    return view('admin.pendaftar.addbiodata');
+});
+
 // Route::get('/dashboard', function () {
 //     return view('ortu.dashortu');
 // })->middleware(['auth', 'verified'])->name('dashboard');

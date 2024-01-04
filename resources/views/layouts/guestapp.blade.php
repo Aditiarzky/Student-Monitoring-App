@@ -11,32 +11,9 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('node_modules/flowbite/css/flowbite.css') }}">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <style>
-            #underline_select::-ms-expand {
-                display: none;
-            }
-
-            #underline_select {
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                appearance: none;
-                padding-right: 1.5rem; /* Adjust this value to give space for the custom arrow icon */
-            }
-
-            #underline_select:after {
-                content: '\25BC'; /* Unicode character for a down-pointing triangle or arrow */
-                position: absolute;
-                top: 50%;
-                right: 0.5rem; /* Adjust this value to position the arrow */
-                transform: translateY(-50%);
-                font-size: 0.8rem; /* Adjust the size of the arrow */
-                color: #888; /* Adjust the color of the arrow */
-            }
-        </style>
     </head>
-    <body class="bg-white">
+    <body class="bg-gray-100">
         @if(session()->has('error'))
         <div id="toast-danger" class="flex items-center w-full max-w-xs p-4 text-gray-500 shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
             <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
@@ -72,6 +49,5 @@
     <main>
         @yield('content')
     </main>
-    <script src="{{ asset('node_modules/flowbite/js/flowbite.js') }}"></script>
     </body>
 </html>

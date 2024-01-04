@@ -22,21 +22,15 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded bg-gray-300 border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500focus:ring-offset-gray-800 hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)]" name="remember">
-                <span class="ms-2 text-sm text-gray-600 ">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-between mt-7">
-            <x-secondary-button type="submit" class="hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-                {{ __('Log in') }}
-            </x-secondary-button>
+        <div class="grid items-center mt-7">
+            <button class="h-8 px-3 py-1 bg-blue-600 rounded-[3px] justify-center items-center gap-2.5 inline-flex" >
+                <div class="text-white text-base font-normal">Login</div>
+            </button>
 
             <!-- Registration Button -->
-            <a href="{{ route('register') }}" class="text-sm mr-4 text-gray-600 hover:text-gray-900">{{ __('Belum punya akun?') }}</a>
+            <div class="text-sm text-center m-5">
+                Belum punya akun? <a href="/registersiswa" class="text-sm mr-4 text-blue-600 hover:text-gray-900">{{ __('Daftar di sini') }}</a>
+            </div>
         </div>
     </form>
 </x-guest-layout>
